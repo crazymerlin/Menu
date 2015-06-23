@@ -25,7 +25,6 @@ public class PriceSort {
 
 	public void complexDinner(int price) {
 		PortionsOfMeals meals = new PortionsOfMeals();
-		List<ComplexesMeals> complexesMealsList = new ArrayList<>();
 		for (int i = 0; i < meals.getMealList().size(); i++) {
 			if ((meals.getMealList().get(i).isAvailable())
 					&& (meals.getMealList().get(i).getMealcategory()

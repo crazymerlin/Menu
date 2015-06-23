@@ -12,12 +12,12 @@ public class Menu {
 		
 		ReaderWriter readerWriter = new ReaderWriter();
 		
-//		PriceSort complexesMeals = new PriceSort(20);
-//		readerWriter.writeToFile("E:/Git/Menu/Menu/Files/PriceSortMeals.txt", complexesMeals);
+		PriceSort complexesMeals = new PriceSort(20);
+		readerWriter.writeToFile("E:/Git/Menu/Menu/Files/PriceSortMeals.txt", complexesMeals);
 						
-//		PriceSort sortFromFile = new PriceSort();
-//		sortFromFile = readerWriter.readFromFile(PriceSort.class);
-//		System.out.println(sortFromFile.toString());
+		PriceSort sortFromFile = new PriceSort();
+		sortFromFile = readerWriter.readFromFile(PriceSort.class);
+		System.out.println(sortFromFile.toString());
 		
 	}
 
