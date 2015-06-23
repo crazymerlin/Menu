@@ -25,15 +25,15 @@ public class Ingredient {
 	/** This private enum value consist the type of ingredient dimension. */
 	private IngredientDimension ingredientDimension;
 
-	public Ingredient() {
-		super();
-	}
-
 	/**
 	 * This private boolean value consist the availability of dish ingredient.
 	 */
 	private boolean available;
 
+	
+	public Ingredient() {
+		super();
+	}
 	/**
 	 * This public constructor set up all parameters. title, price, dimension,
 	 * available.
@@ -51,6 +51,7 @@ public class Ingredient {
 			boolean available) {
 		super();
 		this.title = title;
+		
 		if (price <= 0) {
 			System.out.println("Your price must be above 0");
 		} else {
@@ -85,6 +86,7 @@ public class Ingredient {
 	 *            the title to set
 	 */
 	public void setTitle(String title) {
+		
 		this.title = title;
 	}
 

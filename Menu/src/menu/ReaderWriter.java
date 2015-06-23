@@ -18,12 +18,12 @@ public class ReaderWriter {
 	
 	
 	
-	public void writeToFile(String path, PriceSort object) {
+	public void writeToFile(PriceSort object) {
 		try {
 			
 			
 			// convert user object to json string, and save to a file
-			mapper.writeValue(new File(path), object);
+			mapper.writeValue(new File("E:/Git/Menu/Menu/Files/PriceSortMeals.txt"), object);
 			
 			
 
