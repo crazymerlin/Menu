@@ -22,7 +22,7 @@ public class Menu {
 					"jdbc:mysql://localhost:3306/menu", "root", "root");
 			 java.sql.Statement stmt = con.createStatement();
 //			 String query = "CREATE TABLE ingredients (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, title CHAR(20)";
-	         int rs = stmt.executeUpdate("CREATE TABLE ingredient (title CHAR(20))");
+	         int rs = stmt.executeUpdate("CREATE TABLE ingredients (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, title CHAR(20), price DOUBLE, ingredientDimension CHAR(4), available BIT(1))");
 	         
 //	         , price DOUBLE(9), ingredientDimension CHAR(4), available BIT(1)
 		} catch (SQLException e) {
