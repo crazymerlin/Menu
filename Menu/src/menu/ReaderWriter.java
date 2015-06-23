@@ -2,6 +2,8 @@ package menu;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -14,13 +16,14 @@ public class ReaderWriter {
 
 	private ObjectMapper mapper = new ObjectMapper();
 	
-	PortionsOfMeals meals = new PortionsOfMeals();
 	
-	public void writeToFile(String path, Class classObject) {
+	
+	public void writeToFile(String path, PriceSort object) {
 		try {
-
+			
+			
 			// convert user object to json string, and save to a file
-			mapper.writeValue(new File(path), classObject);
+			mapper.writeValue(new File(path), object);
 			
 			
 
@@ -39,18 +42,17 @@ public class ReaderWriter {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public PortionsOfMeals readFromFile(String path,
-			@SuppressWarnings("rawtypes") Class objectClass) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public PriceSort readFromFile(Class objectClass) {
 
-		PortionsOfMeals portionsOfMeals = null;
+		PriceSort sortFromFile = new PriceSort();
 		
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
 
 			// read from file, convert it to user class
-			portionsOfMeals = mapper.readValue(new File(path), objectClass);
+			sortFromFile = mapper.readValue(new File("E:/Git/Menu/Menu/Files/PriceSortMeals.txt"), objectClass);
 
 		} catch (JsonGenerationException e) {
 
@@ -66,7 +68,7 @@ public class ReaderWriter {
 
 		}
 		
-		return portionsOfMeals;
+		return sortFromFile;
 
 	}
 }

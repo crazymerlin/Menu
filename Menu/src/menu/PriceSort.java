@@ -4,6 +4,7 @@
 package menu;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,46 +13,43 @@ import java.util.List;
  */
 public class PriceSort {
 
-	private PortionsOfMeals meals = new PortionsOfMeals();
-	private List<PortionsOfMeals> complexDinnerList = new ArrayList<PortionsOfMeals>();
+	private List<Meal> complexDinnerList = new ArrayList<>();
 
-	public void addMeal(PortionsOfMeals meal) {
-		complexDinnerList.add(meal);
-
+	public PriceSort() {
+		super();
 	}
 
-	public List<Meal> complexDinner(int price) {
-		List<Meal> complexDinnerMeals = new ArrayList<>();
+	public PriceSort(int price) {
+		complexDinner(price);
+	}
+
+	public void complexDinner(int price) {
+		PortionsOfMeals meals = new PortionsOfMeals();
+		List<ComplexesMeals> complexesMealsList = new ArrayList<>();
 		for (int i = 0; i < meals.getMealList().size(); i++) {
 			if ((meals.getMealList().get(i).isAvailable())
-					&& (meals.getMealList().get(i).getMealcategory().equals(MealCategory.FIRST))) {
+					&& (meals.getMealList().get(i).getMealcategory()
+							.equals(MealCategory.FIRST))) {
 				for (int j = 0; j < meals.getMealList().size(); j++) {
 					if ((meals.getMealList().get(j).isAvailable())
 							&& (meals.getMealList().get(j).getMealcategory()
-									.toString()) == "SECOND") {
+									.equals(MealCategory.SECOND))) {
 						for (int l = 0; l < meals.getMealList().size(); l++) {
 							if ((meals.getMealList().get(l).isAvailable())
 									&& (meals.getMealList().get(l)
-											.getMealcategory().toString()) == "DRINK") {
+											.getMealcategory()
+											.equals(MealCategory.DRINK))) {
 								if (meals.getMealList().get(i).getPrice()
 										+ meals.getMealList().get(j).getPrice()
 										+ meals.getMealList().get(l).getPrice() < price) {
 
-									complexDinnerMeals.add(meals.getMealList()
-											.get(i));
-									complexDinnerMeals.add(meals.getMealList()
-											.get(j));
-									complexDinnerMeals.add(meals.getMealList()
-											.get(l));
-									
+									List<Meal> complexMeal = new ArrayList<>();
 
-									System.out.println(meals.getMealList()
-											.get(i).toString());
-									System.out.println(meals.getMealList()
-											.get(j).toString());
-									System.out.println(meals.getMealList()
-											.get(l).toString()
-											+ "\n");
+									complexMeal.add(meals.getMealList().get(i));
+									complexMeal.add(meals.getMealList().get(j));
+									complexMeal.add(meals.getMealList().get(l));
+
+									complexDinnerList.addAll(new ArrayList<>(complexMeal));
 								}
 							}
 						}
@@ -59,22 +57,32 @@ public class PriceSort {
 				}
 			}
 		}
-		return complexDinnerMeals;
+		// return complexesMealsList;
 	}
 
 	/**
-	 * @return the meals
+	 * @return the complexDinnerList
 	 */
-	public PortionsOfMeals getMeals() {
-		return meals;
+	public List<Meal> getComplexDinnerList() {
+		return complexDinnerList;
 	}
 
 	/**
-	 * @param meals
-	 *            the meals to set
+	 * @param complexDinnerList
+	 *            the complexDinnerList to set
 	 */
-	public void setMeals(PortionsOfMeals meals) {
-		this.meals = meals;
+	public void setComplexDinnerList(List<Meal> complexDinnerList) {
+		this.complexDinnerList = complexDinnerList;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PriceSort [complexDinnerList=" + complexDinnerList + "]";
 	}
 
 }

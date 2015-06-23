@@ -22,7 +22,6 @@ public class PortionsOfMeals {
 	/** This is private array list of Meals objects */
 	private List<Meal> mealList = new ArrayList<Meal>();
 
-
 	public void addIngredient(Ingredient ingredient) {
 		ingredients.add(ingredient);
 	}
@@ -35,13 +34,12 @@ public class PortionsOfMeals {
 	public void addMeal(Meal meal) {
 		// check Avelable
 		mealList.add(meal);
-		 
-	}
-	
 
-//	public PortionsOfMeals() {
-//		super();
-//	}
+	}
+
+	// public PortionsOfMeals() {
+	// super();
+	// }
 
 	/**
 	 * @param mealList
@@ -66,76 +64,58 @@ public class PortionsOfMeals {
 		ingredients.add(oil);
 		ingredients.add(water);
 		ingredients.add(onion);
-		addIngredient(pasta);
-		addIngredient(blackTea);
-		addIngredient(greenTea);
-		addIngredient(meat);
+		ingredients.add(pasta);
+		ingredients.add(blackTea);
+		ingredients.add(greenTea);
+		ingredients.add(meat);
 	}
-	
-	public Ingredient getByTitle(String title){
-		for(Ingredient ingredient : ingredients){
+
+	public Ingredient getByTitle(String title) {
+		for (Ingredient ingredient : ingredients) {
 			if (ingredient.getTitle().equals(title)) {
 				return ingredient;
 			}
 		}
 		return null;
 	}
-	
-	
-	
-	public void initMenu (){
-		
-		addMeal(new Meal("fryPotato", MealCategory.FIRST.toString(),
-				new ArrayList<PortionOfIngredient>(
-						Arrays.asList(new PortionOfIngredient(300, getByTitle("potato")),
-								new PortionOfIngredient(50, getByTitle("onion")),
-								new PortionOfIngredient(50, getByTitle("oil"))))));
 
-		
-		
-		ArrayList<PortionOfIngredient> potatoPastaOnionWater = new ArrayList<>(
-				Arrays.asList(new PortionOfIngredient(200, getByTitle("potato")),
+	public void initMenu() {
+
+		addMeal(new Meal("fryPotato", MealCategory.SECOND.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(300, getByTitle("potato")),
+						new PortionOfIngredient(50, getByTitle("onion")),
+						new PortionOfIngredient(50, getByTitle("oil"))))));
+
+		addMeal(new Meal("potatoPastaSoup", MealCategory.FIRST.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(200, getByTitle("potato")),
 						new PortionOfIngredient(200, getByTitle("pasta")),
 						new PortionOfIngredient(50, getByTitle("onion")),
-						new PortionOfIngredient(300, getByTitle("water"))));
-		addPortionOfIngredient(potatoPastaOnionWater);
-		Meal potatoPastaSoup = new Meal("potatoPastaSoup", "FIRST",
-				potatoPastaOnionWater);
-		addMeal(potatoPastaSoup);
+						new PortionOfIngredient(300, getByTitle("water"))))));
 
-		ArrayList<PortionOfIngredient> potatoMeatOnionOil = new ArrayList<>(
-				Arrays.asList(new PortionOfIngredient(300, getByTitle("potato")),
+		addMeal(new Meal("fryPotatoWithMeat", MealCategory.SECOND.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(300, getByTitle("potato")),
 						new PortionOfIngredient(300, getByTitle("meat")),
 						new PortionOfIngredient(50, getByTitle("onion")),
-						new PortionOfIngredient(50, getByTitle("oil"))));
-		addPortionOfIngredient(potatoMeatOnionOil);
-		Meal fryPotatoWithMeat = new Meal("fryPotatoWithMeat", "SECOND",
-				potatoMeatOnionOil);
-		addMeal(fryPotatoWithMeat);
+						new PortionOfIngredient(50, getByTitle("oil"))))));
 
-		ArrayList<PortionOfIngredient> blackTeaWater = new ArrayList<>(
-				Arrays.asList(new PortionOfIngredient(20, getByTitle("blackTea")),
-						new PortionOfIngredient(300, getByTitle("water"))));
-		addPortionOfIngredient(blackTeaWater);
-		Meal bigBlackTea = new Meal("bigBlackTea", "DRINK", blackTeaWater);
-		addMeal(bigBlackTea);
-
-		ArrayList<PortionOfIngredient> greenTeaWater = new ArrayList<>(
-				Arrays.asList(new PortionOfIngredient(20, getByTitle("greenTea")),
-						new PortionOfIngredient(300, getByTitle("water"))));
-		addPortionOfIngredient(greenTeaWater);
-		Meal bigGreenTea = new Meal("bigGreenTea", "DRINK", greenTeaWater);
-		addMeal(bigGreenTea);
-
-		ArrayList<PortionOfIngredient> carrotPastaWater = new ArrayList<>(
-				Arrays.asList(new PortionOfIngredient(200, getByTitle("carrot")),
+		addMeal(new Meal("bigBlackTea", MealCategory.DRINK.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(20,getByTitle("blackTea")), 
+						new PortionOfIngredient(300,getByTitle("water"))))));
+		
+		addMeal(new Meal("bigGreenTea", MealCategory.DRINK.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(20, getByTitle("greenTea")), 
+						new PortionOfIngredient(300,getByTitle("water"))))));
+		
+		addMeal(new Meal("carrotPastaWaterSoup", MealCategory.FIRST.toString(),
+				new ArrayList<PortionOfIngredient>(Arrays.asList(
+						new PortionOfIngredient(200, getByTitle("carrot")),
 						new PortionOfIngredient(200, getByTitle("pasta")),
-						new PortionOfIngredient(300, getByTitle("water"))));
-		addPortionOfIngredient(carrotPastaWater);
-		Meal carrotPastaWaterSoup = new Meal("carrotPastaWaterSoup", "FIRST",
-				carrotPastaWater);
-		addMeal(carrotPastaWaterSoup);
-
+						new PortionOfIngredient(300, getByTitle("water"))))));
 	}
 
 	/**

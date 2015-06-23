@@ -103,7 +103,7 @@ public class PortionOfIngredient {
 	@Override
 	public String toString() {
 		return "PortionOfIngredient " + ingredient.getTitle() + " [quantity="
-				+ quantity + ", price=" + price  
-				+ ", ingredient=" + ingredient + "]";
+				+ quantity + ", priceForPortion=" + price  
+				+ ", ingredient=" + ingredient + "]\n";
 	}
 }

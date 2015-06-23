@@ -125,9 +125,9 @@ public class Meal {
 	@Override
 	public String toString() {
 		return "Meal " + title + " [title=" + title + ", mealcategory="
-				+ mealcategory + ", price=" + price + ", available="
+				+ mealcategory + ", priceForMeal=" + price + ", available="
 				+ available + ", ingredientPortionsList="
-				+ ingredientPortionsList + "]";
+				+ ingredientPortionsList + "]\n";
 	}
 
 }

@@ -1,5 +1,8 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
 
 	public static void main(String[] args) {
@@ -7,20 +10,15 @@ public class Menu {
 //		Ingredient ing = new Ingredient("car", -1, "GR", true);
 //		System.out.println(ing.toString());
 		
-		
-//		PriceSort sort = new PriceSort();
-//		sort.complexDinner(100);
-		
 		ReaderWriter readerWriter = new ReaderWriter();
-		PortionsOfMeals meals = new PortionsOfMeals();
-//		
-		readerWriter.writeToFile(
-				 "D:/fedechko/Menu/Files/meals.txt", PortionsOfMeals.class);
-//		System.out.println(meals.toString());
-				 
-//		PortionsOfMeals meals = readerWriter.readFromFile(
-//				 "D:/fedechko/Menu/Files/meals.txt", PortionsOfMeals.class);
-//				 System.out.println(meals.toString());
+		
+//		PriceSort complexesMeals = new PriceSort(20);
+//		readerWriter.writeToFile("E:/Git/Menu/Menu/Files/PriceSortMeals.txt", complexesMeals);
+						
+//		PriceSort sortFromFile = new PriceSort();
+//		sortFromFile = readerWriter.readFromFile(PriceSort.class);
+//		System.out.println(sortFromFile.toString());
+		
 	}
 
 }
