@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This configuration file was written by the eclipse-cs plugin configuration editor
+-->
+<!--
+    Checkstyle-Configuration: SoftServe Checkstyle Configuration (without JavaDocs)
+    Description: 
+Checkstyle configuration that checks the SoftServe coding conventions.
+-->
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+    <property name="severity" value="warning"/>
+    <module name="TreeWalker">
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore"/>
+            <property name="scope" value="package"/>
+            <property name="logLoadErrors" value="true"/>
+            <property name="suppressLoadErrors" value="true"/>
+        </module>
+        <module name="JavadocType">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocVariable">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="JavadocStyle">
+            <property name="severity" value="ignore"/>
+            <property name="checkEmptyJavadoc" value="true"/>
+        </module>
+        <module name="MemberName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва поля."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва поля повинна містити лише літери і цифри та починатись з малої літери (Shift+Alt+R для переіменування)."/>
+        </module>
+        <module name="ParameterName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва параметра."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва параметра повинна містити лише літери і цифри та починатись з малої літери (Shift+Alt+R для переіменування)."/>
+        </module>
+        <module name="StaticVariableName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва статичного поля."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва статичного поля повинна містити лише літери і цифри та починатись з малої літери (Shift+Alt+R для переіменування)."/>
+        </module>
+        <module name="TypeName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва класа чи інтерфейса."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва класа чи інтерфейса повинна містити тільки літери і цифри та починатись з великої літери (Shift+Alt+R для переіменування)."/>
+        </module>
+        <module name="AvoidStarImport">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Уникнення імпортів з зірочкою. Eclipse."/>
+        </module>
+        <module name="RedundantImport">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Унекнення дублюючих імпортів. Eclipse."/>
+        </module>
+        <module name="UnusedImports">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Уникнення імпортів, що не використовуються. Eclipse."/>
+        </module>
+        <module name="FileLength">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Довжина файла."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Довжина файла не повинна перевищувати 2000 стрічок."/>
+        </module>
+        <module name="LineLength">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Довжина стрічки. Eclipse."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Довжина стрічки не повинна перевищувати 80 символів."/>
+            <property name="tabWidth" value="4"/>
+        </module>
+        <module name="MethodLength">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Довжина метода чи конструктора."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Довжина метода чи конструктора не повинна перевищувати 150 стрічок (Shift+Alt+M для&quot;Виділення метода&quot;)."/>
+        </module>
+        <module name="ParameterNumber">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Максимальна кількість параметрів."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Максимальна кількість параметрів не може перевищувати 7 (Shift+Alt+T, Introduce Parameter Object… для винесення параметрів у об’єкт)."/>
+            <property name="tokens" value="METHOD_DEF"/>
+        </module>
+        <module name="EmptyForIteratorPad">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="MethodParamPad">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="NoWhitespaceAfter">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="NoWhitespaceBefore">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="OperatorWrap">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="ParenPad">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="TypecastParenPad">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+            <property name="tokens" value="RPAREN,TYPECAST"/>
+        </module>
+        <module name="WhitespaceAfter">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+        </module>
+        <module name="WhitespaceAround">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Eclipse."/>
+            <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,LITERAL_ASSERT,TYPE_EXTENSION_AND,WILDCARD_TYPE"/>
+        </module>
+        <module name="ModifierOrder">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Порядок модифікаторів."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Модифікатори розташовані не у відповідному порядку (Ctrl+1, для виправлення)."/>
+        </module>
+        <module name="RedundantModifier">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Лишній модифікатор."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Певні модифікатори є лишніми (Ctrl+1, для виправлення)."/>
+        </module>
+        <module name="AvoidNestedBlocks">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Лишній блок."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Лишній блок в коді (Ctrl+1, для виправлення)."/>
+        </module>
+        <module name="EmptyBlock">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Пустий блок."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Пустий блок в коді (забрати стейнмент з пустим блоком)."/>
+        </module>
+        <module name="LeftCurly">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Розміщення відкриваючої фігурної дужки."/>
+        </module>
+        <module name="NeedBraces">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Обов'язкова наявність блока."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Оператори do, for, while обов'язково повинні містити блок (Ctrl+1, для виправлення)."/>
+            <property name="tokens" value="LITERAL_DO,LITERAL_FOR,LITERAL_WHILE"/>
+        </module>
+        <module name="RightCurly">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Розміщення закриваючою фігурної дужки."/>
+        </module>
+        <module name="EmptyStatement">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Пустий оператор."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Пустий, непотрібний оператор (Ctrl+1, для видалення)."/>
+        </module>
+        <module name="EqualsHashCode">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="equals, hashCode перевизначення."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Коли в класі перевизначений метод equals, слід перевизначити і метод hashCode для корректної роботи з коллекціями."/>
+        </module>
+        <module name="InnerAssignment">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Присвоєння в середині оператора."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Присвоєння повинне відбуватись в окремій стрічці коду."/>
+        </module>
+        <module name="MagicNumber">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Магічний номер."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="В коді використовується число і не відомо, що воно означає (Shift+Alt+T, Extract Constant... для створення пояснювальної константи)."/>
+        </module>
+        <module name="FinalClass">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Фінальні класи."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Класи в яких тільки private конструктори, повинні декларуватись як фінальні."/>
+        </module>
+        <module name="VisibilityModifier">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Видимість полів."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Поля можуть мати виключно private і protected видимість. (Shift+Alt+T, Encapsulate Field… для інкапсуляції)."/>
+            <property name="protectedAllowed" value="true"/>
+        </module>
+        <module name="ArrayTypeStyle">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Запис масива."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Запис масива повинен здійснюватись у наступній формі: String[] array. Квадратні дужки повинні іти після типу і перед назвою масива (Ctrl+1, для рефакторінга)."/>
+        </module>
+        <module name="UpperEll">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Велика L в значенні long."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Значення long потрібно позначати великою літерою L, щоб не сплутувати малу літеру з одиницею (Ctrl+1, для рефакторінга)."/>
+        </module>
+        <module name="AbstractClassName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва абстрактного класа."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва абстрактного класа повинна починатись словом Abstract або закінчуватись словом Factory (Shift+Alt+R для переіменування)."/>
+        </module>
+        <module name="ConstantName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва константи."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва константи повинна містити тільки великі літери, цифри, і підкреслення та починатись з літери (Alt+Shift+R, Alt+Shift+Up, Ctrl+Shift+X для переіменування)."/>
+        </module>
+        <module name="HiddenField">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Приховане поле."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Локальна змінна чи параметер приховують поле (мають такеж ім'я як і поле) (Shift+Alt+R для переіменування)."/>
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="ignoreSetter" value="true"/>
+        </module>
+        <module name="ImportOrder">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Перевірка групування і послідовності розміщення імпортів. Eclipse."/>
+            <property name="groups" value="java, javax, org, com"/>
+            <property name="separated" value="true"/>
+        </module>
+        <module name="ModifiedControlVariable">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Заборота модифікації лічильника."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Лічильник циклу змінюється поза межами декларації циклу."/>
+        </module>
+        <module name="MultipleVariableDeclarations">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Декларація змінних."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="На стрічку коду може декларуватись тільки одна змінна."/>
+        </module>
+        <module name="NestedIfDepth">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Вкладені if-и"/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Уникайте вкладених if-ів. Виносьте тіла блоків в окремі методи (Shift+Alt+M для виділення метода)."/>
+            <property name="max" value="0"/>
+        </module>
+        <module name="ParameterAssignment">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Заборона переприсвоювати параметер."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Параметер не можна переприсвоювати. (Слід використати локальну змінну)."/>
+        </module>
+        <module name="SuperClone">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Виклик батьківського сlone."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Перекритий метод clone повинен викликати батьківський метод clone."/>
+        </module>
+        <module name="StringLiteralEquality">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Порівняння стрічки."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Стрічки повинні порівнюватись за допомогою метода equals (Ctrl+1, для виправлення)."/>
+        </module>
+        <module name="LocalVariableName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва змінної."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва змінної повинна містити лише літери і цифри та починатись з малої літери (Shift+Alt+R для переіменування)."/>
+            <property name="tokens" value="VARIABLE_DEF"/>
+        </module>
+        <module name="MethodName">
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment" value="Назва метода."/>
+            <metadata name="com.atlassw.tools.eclipse.checkstyle.customMessage" value="Назва метода повинна містити лише літери і цифри та починатись з малої літери (Shift+Alt+R для переіменування)."/>
+        </module>
+    </module>
+</module>
