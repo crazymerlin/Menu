@@ -32,8 +32,8 @@ public class Menu {
 //					+ "('carrot', '0.0052', 'GR', TRUE)";
 			
 			String insertTableSQL2 = "INSERT INTO ingredients"
-					+ "(title, price, ingredientDimension, available) " + "VALUES"
-					+ "(, ?, ?, ?)";
+					+ "(title, price, ingredientDimension, available) VALUES"
+					+ "(?, ?, ?, ?)";
 			
 			PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
 			
@@ -43,7 +43,7 @@ public class Menu {
 				pstmt.setDouble(2, ingred.getPrice());
 				pstmt.setString(3, ingred.getIngredientDimension().toString());
 				pstmt.setBoolean(4, ingred.isAvailable());
-				pstmt.executeUpdate(insertTableSQL2);
+				pstmt.executeUpdate();
 				
 			}
 			

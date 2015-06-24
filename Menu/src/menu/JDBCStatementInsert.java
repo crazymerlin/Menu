@@ -54,11 +54,11 @@ public class JDBCStatementInsert {
 			// execute insert SQL stetement
 //			statement.executeUpdate(insertTableSQL);
 
-			ResultSetMetaData rsmd = rs.
-			
-			ResultSet rs = statement.executeQuery("SELECT title, price FROM ingredients");
-//			Ingredient carrot = new Ingredient();
-			System.out.println(rs.getType());
+//			ResultSetMetaData rsmd = rs.
+//			
+//			ResultSet rs = statement.executeQuery("SELECT title, price FROM ingredients");
+////			Ingredient carrot = new Ingredient();
+//			System.out.println(rs.getType());
 
 //			System.out.println("Record is inserted into MENU table!");
 
