@@ -4,6 +4,9 @@
 
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This public class creates an Ingredient object with followed parameters:
  * (String) title, (double) price, (Dimension (enum)) dimension, (boolean)
@@ -16,6 +19,7 @@ package menu;
  */
 public class Ingredient {
 
+	public static List  <Ingredient> lst = new ArrayList  <Ingredient> ();
 	/** This private String value consist the title of dish ingredient. */
 	private String title;
 
@@ -135,4 +139,5 @@ public class Ingredient {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
+
 }

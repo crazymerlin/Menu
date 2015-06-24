@@ -6,12 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Menu {
+	public static final String driver = "com.mysql.jdbc.Driver";
 
 	public static void main(String[] args) {
 
+		
+		
+		new PortionsOfMeals().initializeMealList();
+		
 		try {
 
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(driver);
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found " + e);
@@ -20,25 +25,38 @@ public class Menu {
 			java.sql.Connection con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/menu", "root", "root");
 
-			String queryDrop = "DROP TABLE IF EXISTS ingredients";
-			String queryCreate = "CREATE TABLE ingredients "
-					+ "(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, "
-					+ "title VARCHAR(20), price DOUBLE, "
-					+ "ingredientDimension VARCHAR(4), available BIT(1))";
-			String selectAllFromMenu = "SELECT * FROM ingredients"
-					+ "WHERE id= ? and title= ?";
-			java.sql.Statement stmt = con.createStatement();
-			PreparedStatement pstmt = con.prepareStatement(selectAllFromMenu);
-			String insertTableSQL = "INSERT INTO ingredients"
+			
+			
+//			String insertTableSQL = "INSERT INTO ingredients"
+//					+ "(title, price, ingredientDimension, available) " + "VALUES"
+//					+ "('carrot', '0.0052', 'GR', TRUE)";
+			
+			String insertTableSQL2 = "INSERT INTO ingredients"
 					+ "(title, price, ingredientDimension, available) " + "VALUES"
-					+ "('carrot', '0.0052', 'GR', TRUE)";
-			stmt.execute(insertTableSQL);
-			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
-			+ "ingredientDimension, available FROM ingredients");
-			while (rs.next())
+					+ "(, ?, ?, ?)";
+			
+			PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
+			
+			for (Ingredient ingred : PortionsOfMeals.ingredients)
 			{
-			System.out.println(new Ingredient (rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getBoolean(5)));
+				pstmt.setString(1, ingred.getTitle());
+				pstmt.setDouble(2, ingred.getPrice());
+				pstmt.setString(3, ingred.getIngredientDimension().toString());
+				pstmt.setBoolean(4, ingred.isAvailable());
+				pstmt.executeUpdate(insertTableSQL2);
+				
 			}
+			
+//			stmt.executeUpdate(insertTableSQL2);
+			
+//			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
+//			+ "ingredientDimension, available FROM ingredients");
+//			while (rs.next())
+//			{
+//			Ingredient.lst.add(new Ingredient(rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getBoolean(5)));
+//			}
+
+			
 			// pstmt.setInt(1, 1);
 			// pstmt.setString(2, "carrot");
 			// ResultSet prs = pstmt.executeQuery();
@@ -72,6 +90,15 @@ public class Menu {
 
 		}
 
+//		String queryDrop = "DROP TABLE IF EXISTS ingredients";
+//		String queryCreate = "CREATE TABLE ingredients "
+//				+ "(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, "
+//				+ "title VARCHAR(20), price DOUBLE, "
+//				+ "ingredientDimension VARCHAR(4), available BIT(1))";
+//		String selectAllFromMenu = "SELECT * FROM ingredients"
+//				+ "WHERE id= ? and title= ?";
+//		java.sql.Statement stmt = con.createStatement();
+		
 		// Ingredient ing = new Ingredient("≥‚‡", 0.0005,
 		// IngredientDimension.GR, true); // TODO: Initialize to an appropriate
 		// System.out.println(ing);
@@ -86,4 +113,5 @@ public class Menu {
 		// System.out.println(sortFromFile.toString());
 
 	}
+	
 }
