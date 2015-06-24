@@ -8,6 +8,7 @@ import java.util.List;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 /**
  * Created by skaraltc on 6/19/2015.
@@ -17,8 +18,36 @@ public class ReaderWriter {
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	
+	// How to read/write lists:
 	
-	public void writeToFile(PriceSort object) {
+//	public static void main(String[] args) {
+//		new PortionsOfMeals().initializeMealList();
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//			mapper.writeValue(new File("E:/Git/Menu/Menu/Files/ingredients.txt"), ingredients);
+//			
+//			//List<PortionsOfMeals> myObjects 
+//			ingredients= mapper.readValue(new File("E:/Git/Menu/Menu/Files/ingredients2.txt"), new TypeReference<List<Ingredient>>(){});
+//			
+//			//ingredients = mapper.readValue(new File("E:/Git/Menu/Menu/Files/ingredients2.txt"), );
+//			
+//			
+//		} catch (JsonGenerationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (JsonMappingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(ingredients);
+//	}
+	
+	
+	
+	public void writeToFile(complexDinner object) {
 		try {
 			
 			
@@ -43,9 +72,9 @@ public class ReaderWriter {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public PriceSort readFromFile(Class objectClass) {
+	public complexDinner readFromFile(Class objectClass) {
 
-		PriceSort sortFromFile = new PriceSort();
+		complexDinner sortFromFile = new complexDinner();
 		
 		ObjectMapper mapper = new ObjectMapper();
 

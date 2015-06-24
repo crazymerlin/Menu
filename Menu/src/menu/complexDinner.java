@@ -11,15 +11,15 @@ import java.util.List;
  * @author Sviatoslav
  * 
  */
-public class PriceSort {
+public class complexDinner {
 
 	private List<Meal> complexDinnerList = new ArrayList<>();
 
-	public PriceSort() {
+	public complexDinner() {
 		super();
 	}
 
-	public PriceSort(int price) {
+	public complexDinner(int price) {
 		complexDinner(price);
 	}
 
