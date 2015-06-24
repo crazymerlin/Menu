@@ -22,7 +22,7 @@ public class PortionsOfMeals {
 
 
 	/** This is private array list of PortionOfIngredient objects */
-	private static List<PortionOfIngredient> portionOfIngredientsList = new ArrayList<>();
+	public static List<PortionOfIngredient> portionOfIngredientsList = new ArrayList<>();
 
 	/** This is private array list of Meals objects */
 	public static List<Meal> mealList = new ArrayList<Meal>();
@@ -46,17 +46,6 @@ public class PortionsOfMeals {
 	public PortionsOfMeals() {
 		super();
 	}
-
-
-	public Ingredient getByTitle(String title) {
-		for (Ingredient ingredient : Ingredient.lst) {
-			if (ingredient.getTitle().equals(title)) {
-				return ingredient;
-			}
-		}
-		return null;
-	}
-
 
 	/**
 	 * @return the portionOfIngredientsList

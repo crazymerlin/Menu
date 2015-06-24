@@ -112,26 +112,10 @@ public class Meal {
 	}
 
 	/**
-	 * @param price
-	 *            the price to set
-	 */
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
-
-	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	/* (non-Javadoc)
