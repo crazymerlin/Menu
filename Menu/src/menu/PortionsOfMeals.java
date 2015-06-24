@@ -53,8 +53,8 @@ public class PortionsOfMeals {
 	 * @param mealList
 	 */
 	public PortionsOfMeals() {
-		initializeMealList();
-		initMenu();
+		//initializeMealList();
+//		initMenu();
 	}
 
 	public void initializeMealList() {

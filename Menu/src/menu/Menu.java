@@ -13,7 +13,7 @@ public class Menu {
 		
 		
 		new PortionsOfMeals().initializeMealList();
-		
+		System.out.println(PortionsOfMeals.ingredients);
 		try {
 
 			Class.forName(driver);
