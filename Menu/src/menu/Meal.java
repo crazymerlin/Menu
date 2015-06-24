@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Meal {
 
+	private int id;
 	private String title;
 	private MealCategory mealcategory;
 	private double price;
@@ -23,9 +24,10 @@ public class Meal {
 	 * @param mealcategory
 	 * @param ingredientPortionsList
 	 */
-	public Meal(String title, String mealcategory,
+	public Meal(int id, String title, String mealcategory,
 			List<PortionOfIngredient> ingredientPortionsList) {
 		super();
+		this.id = id;
 		this.available = true;
 		this.title = title;
 		this.mealcategory = MealCategory.valueOf(mealcategory);
@@ -67,8 +69,8 @@ public class Meal {
 	 * @param mealcategory
 	 *            the mealcategory to set
 	 */
-	public void setMealcategory(MealCategory mealcategory) {
-		this.mealcategory = mealcategory;
+	public void setMealcategory(String mealcategory) {
+		this.mealcategory = MealCategory.valueOf(mealcategory);
 	}
 
 	/**
@@ -116,18 +118,33 @@ public class Meal {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Meal " + title + " [title=" + title + ", mealcategory="
-				+ mealcategory + ", priceForMeal=" + price + ", available="
+		return "Meal " + title + " [id=" + id + ", title=" + title + ", mealcategory="
+				+ mealcategory + ", price=" + price + ", available="
 				+ available + ", ingredientPortionsList="
-				+ ingredientPortionsList + "]\n";
+				+ ingredientPortionsList + "]";
 	}
+
+
 
 }
