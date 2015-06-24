@@ -18,6 +18,8 @@ import java.util.List;
  * @since 1.0
  */
 public class Ingredient {
+	
+	private int id;
 
 	public static List  <Ingredient> lst = new ArrayList  <Ingredient> ();
 	/** This private String value consist the title of dish ingredient. */
@@ -51,9 +53,10 @@ public class Ingredient {
 	 * @param available
 	 *            boolean type
 	 */
-	public Ingredient(String title, double price, String ingredientDimension,
+	public Ingredient(int id, String title, double price, String ingredientDimension,
 			boolean available) {
 		super();
+		this.id = id;
 		this.title = title;
 		
 		if (price <= 0) {
@@ -65,18 +68,17 @@ public class Ingredient {
 		this.available = available;
 	}
 
-	/**
-	 * This is default public toString method.
-	 * 
+
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Ingredient " + title + " [title=" + title + ", priceFor1"
-				+ ingredientDimension + "=" + price + ", ingredientDimension="
-				+ ingredientDimension + ", available=" + available + "]";
+		return "Ingredient " + title + " [id=" + id + ", title=" + title + ", price=" + price
+				+ ", ingredientDimension=" + ingredientDimension
+				+ ", available=" + available + "]";
 	}
-
 	/**
 	 * 
 	 * @return the title
@@ -139,5 +141,18 @@ public class Ingredient {
 	public void setAvailable(boolean available) {
 		this.available = available;
 	}
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 
 }

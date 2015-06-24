@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Menu {
 	public static final String driver = "com.mysql.jdbc.Driver";
@@ -12,8 +13,9 @@ public class Menu {
 
 		
 		
-		new PortionsOfMeals().initializeMealList();
-		System.out.println(PortionsOfMeals.ingredients);
+//		new PortionsOfMeals().initializeMealList();
+		
+		
 		try {
 
 			Class.forName(driver);
@@ -31,31 +33,36 @@ public class Menu {
 //					+ "(title, price, ingredientDimension, available) " + "VALUES"
 //					+ "('carrot', '0.0052', 'GR', TRUE)";
 			
-			String insertTableSQL2 = "INSERT INTO ingredients"
-					+ "(title, price, ingredientDimension, available) VALUES"
-					+ "(?, ?, ?, ?)";
-			
-			PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
-			
-			for (Ingredient ingred : PortionsOfMeals.ingredients)
-			{
-				pstmt.setString(1, ingred.getTitle());
-				pstmt.setDouble(2, ingred.getPrice());
-				pstmt.setString(3, ingred.getIngredientDimension().toString());
-				pstmt.setBoolean(4, ingred.isAvailable());
-				pstmt.executeUpdate();
-				
-			}
-			
-//			stmt.executeUpdate(insertTableSQL2);
-			
-//			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
-//			+ "ingredientDimension, available FROM ingredients");
-//			while (rs.next())
+//			String insertTableSQL2 = "INSERT INTO ingredients"
+//					+ "(title, price, ingredientDimension, available) VALUES"
+//					+ "(?, ?, ?, ?)";
+//			
+//			PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
+//			
+//			for (Ingredient ingred : PortionsOfMeals.ingredients)
 //			{
-//			Ingredient.lst.add(new Ingredient(rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getBoolean(5)));
+//				pstmt.setString(1, ingred.getTitle());
+//				pstmt.setDouble(2, ingred.getPrice());
+//				pstmt.setString(3, ingred.getIngredientDimension().toString());
+//				pstmt.setBoolean(4, ingred.isAvailable());
+//				pstmt.executeUpdate();
+//				
 //			}
-
+			
+			Statement stmt = con.createStatement();
+			
+			
+			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
+			+ "ingredientDimension, available FROM ingredients");
+			while (rs.next())
+			{
+			Ingredient.lst.add(new Ingredient(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getBoolean(5)));
+			}
+			System.out.println(Ingredient.lst);
+			
+			new PortionsOfMeals().initMenu();
+			System.out.println(PortionsOfMeals.mealList);
+			
 			
 			// pstmt.setInt(1, 1);
 			// pstmt.setString(2, "carrot");
@@ -64,9 +71,7 @@ public class Menu {
 //			 stmt.execute(queryDrop);
 //			 stmt.execute(queryCreate);
 
-//			stmt = con.createStatement(
-//			           ResultSet.TYPE_SCROLL_SENSITIVE,
-//			           ResultSet.CONCUR_UPDATABLE);
+
 //			ResultSet rs = stmt.executeQuery("select * from ingredients");
 //			Ingredient carrot = new Ingredient(rs);
 
