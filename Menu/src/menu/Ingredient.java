@@ -47,7 +47,7 @@ public class Ingredient {
 	 * @param available
 	 *            boolean type
 	 */
-	public Ingredient(String title, double price, IngredientDimension ingredientDimension,
+	public Ingredient(String title, double price, String ingredientDimension,
 			boolean available) {
 		super();
 		this.title = title;
@@ -57,7 +57,7 @@ public class Ingredient {
 		} else {
 			this.price = price;
 		}
-		this.ingredientDimension = ingredientDimension;
+		this.ingredientDimension = IngredientDimension.valueOf(ingredientDimension);
 		this.available = available;
 	}
 

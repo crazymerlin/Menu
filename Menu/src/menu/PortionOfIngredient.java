@@ -72,29 +72,6 @@ public class PortionOfIngredient {
 		return price;
 	}
 
-	/**
-	 * @param price
-	 *            the price to set
-	 */
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	/**
-	 * @return the available
-	 */
-	/*public boolean isAvailable() {
-		return available;
-	}
-
-	*//**
-	 * @param available
-	 *            the available to set
-	 *//*
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-*/
 	/*
 	 * (non-Javadoc)
 	 * 
