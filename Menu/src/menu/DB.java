@@ -1,6 +1,52 @@
 package menu;
 
 public class DB {
+	
+	// String queryCreate = "CREATE TABLE ingredients "
+	// + "(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, "
+	// + "title VARCHAR(20), price DOUBLE, "
+	// + "ingredientDimension VARCHAR(4), available BIT(1))";
+	// String selectAllFromMenu = "SELECT * FROM ingredients"
+	// + "WHERE id= ? and title= ?";
+	// java.sql.Statement stmt = con.createStatement();
+	
+	
+	// String queryCreate = "CREATE TABLE Meals "
+	// + "(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, "
+	// + "title VARCHAR(20), price DOUBLE, "
+	// + "mealcategory VARCHAR(20), available BIT(1))";
+	// java.sql.Statement stmt1 = con.createStatement();
+	// int rs1 = stmt1.executeUpdate(queryCreate);
+	
+	// String insertTableSQL2 = "INSERT INTO ingredients"
+	// + "(title, price, ingredientDimension, available) VALUES"
+	// + "(?, ?, ?, ?)";
+	// PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
+	// for (Ingredient ingred : PortionsOfMeals.ingredients)
+	// {
+	// pstmt.setString(1, ingred.getTitle());
+	// pstmt.setDouble(2, ingred.getPrice());
+	// pstmt.setString(3, ingred.getIngredientDimension().toString());
+	// pstmt.setBoolean(4, ingred.isAvailable());
+	// pstmt.executeUpdate();
+	// }
+	//new PortionsOfMeals().initMenu();
+	
+	//String insertTableSQL2 = "INSERT INTO meals"
+//			+ "(title, price, mealcategory, available) VALUES"
+//			+ "(?, ?, ?, ?)";
+	//PreparedStatement pstmt = con.prepareStatement(insertTableSQL2);
+	//for (Meal meal : PortionsOfMeals.mealList) {
+//		pstmt.setString(1, meal.getTitle());
+//		pstmt.setDouble(2, meal.getPrice());
+//		pstmt.setString(3, meal.getMealcategory().toString());
+//		pstmt.setBoolean(4, meal.isAvailable());
+//		pstmt.executeUpdate();
+	//}
+
+
+	
+	
 
 //	public void initializeMealList() {
 //	Ingredient carrot = new Ingredient("carrot", 0.0052, "GR", true);

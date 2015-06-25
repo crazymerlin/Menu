@@ -37,7 +37,7 @@ public class PortionOfIngredient {
 		double tmpPrice = Math.round(quantity * ingredient.getPrice() * 100.0);
 		this.price = tmpPrice / 100;
 	}
-
+	
 	/**
 	 * @return the quantity
 	 */

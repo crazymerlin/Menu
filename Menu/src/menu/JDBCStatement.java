@@ -4,10 +4,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCStatement {
 
-	public static void IngredientReader() {
+	public static void IngredientCreater() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -20,12 +22,12 @@ public class JDBCStatement {
 			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
 					+ "ingredientDimension, available FROM ingredients");
 			while (rs.next()) {
-				Ingredient.ingredientList.add(
-						new Ingredient(rs.getInt(1),
-										rs.getString(2), 
-										rs.getDouble(3),
-										rs.getString(4), 
-										rs.getBoolean(5)));
+				Ingredient.ingredientList.add(new Ingredient(
+						rs.getInt(1), 
+						rs.getString(2),
+						rs.getDouble(3), 
+						rs.getString(4), 
+						rs.getBoolean(5)));
 			}
 			rs.close();
 			stmt.close();
@@ -35,7 +37,7 @@ public class JDBCStatement {
 		}
 	}
 
-	public static void portionOfIngredientsListReader() {
+	public static void portionOfIngredientsListCreater() {
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -65,6 +67,56 @@ public class JDBCStatement {
 				PortionOfIngredient.portionOfIngredientsList.add(pi);
 			}
 			System.out.println(PortionOfIngredient.portionOfIngredientsList);
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("SQL exception occured" + e);
+		}
+	}
+
+	public static void MealListCreater() {
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
+		}
+		try {
+			java.sql.Connection con = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/menu", "root", "root");
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt
+					.executeQuery("SELECT mi.quantity, i.id, i.title, i.price, "
+							+ "i.ingredientDimension, i.available, m.id, "
+							+ "m.title, m.mealcategory FROM meals m "
+							+ "JOIN mealitem mi ON (m.id = mi.mealid) "
+							+ "JOIN ingredients i ON (mi.ingredientid = i.id)");
+			while (rs.next()) {
+				for (int i = 1; i <= rs.getInt(7); i++) {
+					List<PortionOfIngredient> pIList = new ArrayList<>();
+					if (rs.getInt(7) == i) {
+						PortionOfIngredient pOfIngredient = new PortionOfIngredient();
+						Ingredient ingredient = new Ingredient();
+						ingredient.setId(rs.getInt(2));
+						ingredient.setTitle(rs.getString(3));
+						ingredient.setPrice(rs.getDouble(4));
+						ingredient.setIngredientDimension(rs.getString(5));
+						ingredient.setAvailable(rs.getBoolean(6));
+						pOfIngredient.setQuantity(rs.getInt(1));
+						pOfIngredient.setIngredient(ingredient);
+						pIList.add(pOfIngredient);
+					}
+					Meal meal = new Meal(
+							rs.getInt(7), 
+							rs.getString(8),
+							rs.getString(9), 
+							pIList);
+					Meal.mealList.add(meal);
+				}
+			}
+			System.out.println(Meal.mealList);
 			rs.close();
 			stmt.close();
 			con.close();

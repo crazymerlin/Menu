@@ -11,6 +11,9 @@ public class Meal {
 	private double price;
 	private boolean available;
 	private List<PortionOfIngredient> ingredientPortionsList = new ArrayList<>();
+	
+	/** This is private array list of Meals objects */
+	public static List<Meal> mealList = new ArrayList<Meal>();
 
 	public Meal() {
 		super();
@@ -37,6 +40,12 @@ public class Meal {
 				this.available = false;
 				break;
 			}
+		}
+	}
+	
+	public void addMeal(Meal meal) {
+		if (meal.isAvailable()) {
+			mealList.add(meal);
 		}
 	}
 
