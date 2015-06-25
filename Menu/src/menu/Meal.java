@@ -12,9 +12,6 @@ public class Meal {
 	private boolean available;
 	private List<PortionOfIngredient> ingredientPortionsList = new ArrayList<>();
 
-	
-	
-	
 	public Meal() {
 		super();
 	}

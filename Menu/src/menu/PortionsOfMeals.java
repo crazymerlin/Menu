@@ -20,47 +20,17 @@ import org.codehaus.jackson.type.TypeReference;
  */
 public class PortionsOfMeals {
 
-
-	/** This is private array list of PortionOfIngredient objects */
-	public static List<PortionOfIngredient> portionOfIngredientsList = new ArrayList<>();
-
 	/** This is private array list of Meals objects */
 	public static List<Meal> mealList = new ArrayList<Meal>();
-
-	// public void addIngredient(Ingredient ingredient) {
-	// ingredients.add(ingredient);
-	// }
-
-	public void addPortionOfIngredient(
-			ArrayList<PortionOfIngredient> portionOfIngredient) {
-		portionOfIngredientsList.addAll(portionOfIngredient);
-	}
-
-	public void addMeal(Meal meal) {
-		// check Avelable
-		if (meal.isAvailable()) {
-			mealList.add(meal);
-		}
-	}
 
 	public PortionsOfMeals() {
 		super();
 	}
-
-	/**
-	 * @return the portionOfIngredientsList
-	 */
-	public List<PortionOfIngredient> getPortionOfIngredientsList() {
-		return portionOfIngredientsList;
-	}
-
-	/**
-	 * @param portionOfIngredientsList
-	 *            the portionOfIngredientsList to set
-	 */
-	public void setPortionOfIngredientsList(
-			List<PortionOfIngredient> portionOfIngredientsList) {
-		this.portionOfIngredientsList = portionOfIngredientsList;
+	
+	public void addMeal(Meal meal) {
+		if (meal.isAvailable()) {
+			mealList.add(meal);
+		}
 	}
 
 	/**
@@ -85,8 +55,8 @@ public class PortionsOfMeals {
 	 */
 	@Override
 	public String toString() {
-		return "PortionsOfMeals [ingredientsList=" + Ingredient.lst
-				+ ", portionOfIngredientsList=" + portionOfIngredientsList
+		return "PortionsOfMeals [ingredientsList=" + Ingredient.ingredientList
+				+ ", portionOfIngredientsList=" + PortionOfIngredient.portionOfIngredientsList
 				+ "]";
 	}
 }
