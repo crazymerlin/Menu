@@ -18,7 +18,7 @@ public class ReaderWriter {
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	
-	// How to read/write lists:
+	// HOW TO WRITE A LISTS:
 	
 //	public static void main(String[] args) {
 //		new PortionsOfMeals().initializeMealList();
@@ -47,7 +47,7 @@ public class ReaderWriter {
 	
 	
 	
-	public void writeToFile(complexDinner object) {
+	public void writeToFile(ComplexMealMenu object) {
 		try {
 			
 			
@@ -72,9 +72,9 @@ public class ReaderWriter {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public complexDinner readFromFile(Class objectClass) {
+	public ComplexMealMenu readFromFile(Class objectClass) {
 
-		complexDinner sortFromFile = new complexDinner();
+		ComplexMealMenu sortFromFile = new ComplexMealMenu();
 		
 		ObjectMapper mapper = new ObjectMapper();
 

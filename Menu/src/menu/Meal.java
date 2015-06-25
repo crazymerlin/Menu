@@ -10,7 +10,7 @@ public class Meal {
 	private MealCategory mealcategory;
 	private double price;
 	private boolean available;
-	private List<PortionOfIngredient> ingredientPortionsList = new ArrayList<>();
+	private List<Ingredient> ingredientList = new ArrayList<>();
 	
 	/** This is private array list of Meals objects */
 	public static List<Meal> mealList = new ArrayList<Meal>();
@@ -22,27 +22,41 @@ public class Meal {
 	/**
 	 * @param title
 	 * @param mealcategory
-	 * @param ingredientPortionsList
+	 * @param ingredientList
 	 */
 	public Meal(int id, String title, String mealcategory,
-			List<PortionOfIngredient> ingredientPortionsList) {
+			List<Ingredient> ingredientList) {
 		super();
 		this.id = id;
 		this.available = true;
 		this.title = title;
 		this.mealcategory = MealCategory.valueOf(mealcategory);
-		this.ingredientPortionsList = ingredientPortionsList;
-		for (PortionOfIngredient portionOfIngredient : ingredientPortionsList) {
-			this.price += portionOfIngredient.getPrice();
+		this.ingredientList = ingredientList;
+		for (Ingredient ingredient : ingredientList) {
+			this.price += ingredient.getPrice();
 		}
-		for (PortionOfIngredient portionOfIngredient : ingredientPortionsList) {
-			if (!portionOfIngredient.getIngredient().isAvailable()) {
+		for (Ingredient ingredient : Ingredient.ingredientsList) {
+			if (!ingredient.getIngredient().isAvailable()) {
 				this.available = false;
 				break;
 			}
 		}
 	}
 	
+	/**
+	 * @return the mealList
+	 */
+	public static List<Meal> getMealList() {
+		return mealList;
+	}
+
+	/**
+	 * @param mealList the mealList to set
+	 */
+	public static void setMealList(List<Meal> mealList) {
+		Meal.mealList = mealList;
+	}
+
 	public void addMeal(Meal meal) {
 		if (meal.isAvailable()) {
 			mealList.add(meal);
@@ -82,17 +96,17 @@ public class Meal {
 	/**
 	 * @return the ingredientPortionsList
 	 */
-	public List<PortionOfIngredient> getIngredientPortionsList() {
-		return ingredientPortionsList;
+	public List<Ingredient> getIngredientList() {
+		return ingredientList;
 	}
 
 	/**
-	 * @param ingredientPortionsList
+	 * @param ingredientList
 	 *            the ingredientPortionsList to set
 	 */
-	public void setIngredientPortionsList(
-			ArrayList<PortionOfIngredient> ingredientPortionsList) {
-		this.ingredientPortionsList = ingredientPortionsList;
+	public void setIngredientList(
+			ArrayList<Ingredient> ingredientList) {
+		this.ingredientList = ingredientList;
 	}
 
 	/**
@@ -118,6 +132,13 @@ public class Meal {
 	}
 
 	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	/**
 	 * @return the id
 	 */
 	public int getId() {
@@ -131,8 +152,8 @@ public class Meal {
 	public String toString() {
 		return "Meal " + title + " [id=" + id + ", title=" + title + ", mealcategory="
 				+ mealcategory + ", price=" + price + ", available="
-				+ available + ", ingredientPortionsList="
-				+ ingredientPortionsList + "]";
+				+ available + ", ingredientList="
+				+ ingredientList + "]";
 	}
 
 

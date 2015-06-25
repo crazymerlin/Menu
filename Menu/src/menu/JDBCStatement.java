@@ -9,7 +9,7 @@ import java.util.List;
 
 public class JDBCStatement {
 
-	public static void IngredientCreater() {
+	public static void IngredientCreator() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -22,7 +22,7 @@ public class JDBCStatement {
 			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
 					+ "ingredientDimension, available FROM ingredients");
 			while (rs.next()) {
-				Ingredient.ingredientList.add(new Ingredient(
+				Product.productList.add(new Product(
 						rs.getInt(1), 
 						rs.getString(2),
 						rs.getDouble(3), 
@@ -37,7 +37,7 @@ public class JDBCStatement {
 		}
 	}
 
-	public static void portionOfIngredientsListCreater() {
+	public static void IngredientsListCreator() {
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -55,18 +55,18 @@ public class JDBCStatement {
 							+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 							+ "JOIN ingredients i ON (mi.ingredientid = i.id)");
 			while (rs.next()) {
-				PortionOfIngredient pi = new PortionOfIngredient();
 				Ingredient ingredient = new Ingredient();
-				ingredient.setId(rs.getInt(2));
-				ingredient.setTitle(rs.getString(3));
-				ingredient.setPrice(rs.getDouble(4));
-				ingredient.setIngredientDimension(rs.getString(5));
-				ingredient.setAvailable(rs.getBoolean(6));
-				pi.setQuantity(rs.getInt(1));
-				pi.setIngredient(ingredient);
-				PortionOfIngredient.portionOfIngredientsList.add(pi);
+				Product product = new Product();
+				product.setId(rs.getInt(2));
+				product.setTitle(rs.getString(3));
+				product.setPrice(rs.getDouble(4));
+				product.setProductDimension(rs.getString(5));
+				product.setAvailable(rs.getBoolean(6));
+				ingredient.setQuantity(rs.getInt(1));
+				ingredient.setIngredient(product);
+				Ingredient.ingredientsList.add(ingredient);
 			}
-			System.out.println(PortionOfIngredient.portionOfIngredientsList);
+			System.out.println(Ingredient.ingredientsList);
 			rs.close();
 			stmt.close();
 			con.close();
@@ -75,7 +75,7 @@ public class JDBCStatement {
 		}
 	}
 
-	public static void MealListCreater() {
+	public static void MealListCreator() {
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -90,29 +90,31 @@ public class JDBCStatement {
 			ResultSet rs = stmt
 					.executeQuery("SELECT mi.quantity, i.id, i.title, i.price, "
 							+ "i.ingredientDimension, i.available, m.id, "
-							+ "m.title, m.mealcategory FROM meals m "
+							+ "m.title, m.mealcategory FROM" 
+							+ " meals m "
 							+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 							+ "JOIN ingredients i ON (mi.ingredientid = i.id)");
 			while (rs.next()) {
 				for (int i = 1; i <= rs.getInt(7); i++) {
-					List<PortionOfIngredient> pIList = new ArrayList<>();
+					List<Ingredient> ingredientList = new ArrayList<>();
 					if (rs.getInt(7) == i) {
-						PortionOfIngredient pOfIngredient = new PortionOfIngredient();
-						Ingredient ingredient = new Ingredient();
-						ingredient.setId(rs.getInt(2));
-						ingredient.setTitle(rs.getString(3));
-						ingredient.setPrice(rs.getDouble(4));
-						ingredient.setIngredientDimension(rs.getString(5));
-						ingredient.setAvailable(rs.getBoolean(6));
-						pOfIngredient.setQuantity(rs.getInt(1));
-						pOfIngredient.setIngredient(ingredient);
-						pIList.add(pOfIngredient);
+						
+						Product product = new Product();
+						product.setId(rs.getInt(2));
+						product.setTitle(rs.getString(3));
+						product.setPrice(rs.getDouble(4));
+						product.setProductDimension(rs.getString(5));
+						product.setAvailable(rs.getBoolean(6));
+						Ingredient ingredient = new Ingredient(
+								rs.getInt(1), product);
+						ingredientList.add(ingredient);
 					}
 					Meal meal = new Meal(
 							rs.getInt(7), 
 							rs.getString(8),
 							rs.getString(9), 
-							pIList);
+							ingredientList);
+					
 					Meal.mealList.add(meal);
 				}
 			}

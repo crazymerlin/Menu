@@ -10,7 +10,7 @@ package menu;
  * @author Sviatoslav
  * 
  */
-public enum IngredientDimension {
+public enum ProductDimension {
 
 	/** this is unit of measure 1 gram */
 	GR,

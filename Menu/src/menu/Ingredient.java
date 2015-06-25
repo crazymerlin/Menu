@@ -1,5 +1,5 @@
 /**
- * 
+ * Copyright SoftServe.inc
  */
 
 package menu;
@@ -8,92 +8,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This public class creates an Ingredient object with followed parameters:
- * (String) title, (double) price, (Dimension (enum)) dimension, (boolean)
- * availability.
- * 
  * @author Sviatoslav
  * 
- * @version 1.0
- * @since 1.0
  */
 public class Ingredient {
-	
-	private int id;
 
-	public static List  <Ingredient> ingredientList = new ArrayList  <Ingredient> ();
-	/** This private String value consist the title of dish ingredient. */
-	private String title;
-
-	/** This private double value consist the price of dish ingredient. */
+	private double quantity;
+	private Product product;
 	private double price;
 
-	/** This private enum value consist the type of ingredient dimension. */
-	private IngredientDimension ingredientDimension;
+	/** This is private array list of Ingredient objects */
+	public static List<Ingredient> ingredientsList = new ArrayList<>();
 
-	/**
-	 * This private boolean value consist the availability of dish ingredient.
-	 */
-	private boolean available;
-
-	
 	public Ingredient() {
 		super();
 	}
+
 	/**
-	 * This public constructor set up all parameters. title, price, dimension,
-	 * available.
-	 * 
-	 * @param title
-	 *            String type
+	 * @param quantity
+	 * @param product
 	 * @param price
-	 *            double type
-	 * @param dimension
-	 *            String type
-	 * @param available
-	 *            boolean type
+	 * @param availability
 	 */
-	public Ingredient(int id, String title, double price, String ingredientDimension,
-			boolean available) {
+	public Ingredient(double quantity, Product product) {
 		super();
-		this.id = id;
-		this.title = title;
-		
-		if (price <= 0) {
-			System.out.println("Your price must be above 0");
-		} else {
-			this.price = price;
-		}
-		this.ingredientDimension = IngredientDimension.valueOf(ingredientDimension);
-		this.available = available;
+		this.quantity = quantity;
+		this.product = product;
+		double tmpPrice = Math.round(quantity * product.getPrice() * 100.0);
+		this.price = tmpPrice / 100;
 	}
-
-
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Ingredient " + title + " [id=" + id + ", title=" + title + ", price=" + price
-				+ ", ingredientDimension=" + ingredientDimension
-				+ ", available=" + available + "]";
-	}
+	
 	/**
-	 * 
-	 * @return the title
+	 * @return the quantity
 	 */
-	public String getTitle() {
-		return title;
+	public double getQuantity() {
+		return quantity;
 	}
 
 	/**
-	 * @param title
-	 *            the title to set
+	 * @param quantity
+	 *            the quantity to set
 	 */
-	public void setTitle(String title) {
-		
-		this.title = title;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	/**
+	 * @return the ingredient
+	 */
+	public Product getIngredient() {
+		return product;
+	}
+
+	/**
+	 * @param product
+	 *            the ingredient to set
+	 */
+	public void setIngredient(Product product) {
+		this.product = product;
 	}
 
 	/**
@@ -104,55 +76,38 @@ public class Ingredient {
 	}
 
 	/**
-	 * @param price
-	 *            the price to set
+	 * @param price the price to set
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
 	/**
-	 * @return the dimension
+	 * @return the IngredientsList
 	 */
-	public IngredientDimension getIngredientDimension() {
-		return ingredientDimension;
+	public static List<Ingredient> getIngredientsList() {
+		return ingredientsList;
 	}
 
 	/**
-	 * @param ingredientDimension
-	 *            the dimension to set
+	 * @param portionOfIngredientsList
+	 *            the portionOfIngredientsList to set
 	 */
-	public void setIngredientDimension(String ingredientDimension) {
-		this.ingredientDimension = IngredientDimension
-				.valueOf(ingredientDimension);
+	public static void setIngredientsList(
+			List<Ingredient> ingredientsList) {
+		Ingredient.ingredientsList = ingredientsList;
 	}
 
-	/**
-	 * @return the availability
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
 	 */
-	public boolean isAvailable() {
-		return available;
+	@Override
+	public String toString() {
+		return "Ingredient " + product.getTitle() + " [quantity="
+				+ quantity + ", product=" + product + ", price=" + price
+				+ "]";
 	}
-
-	/**
-	 * @param availability
-	 *            the availability to set
-	 */
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 
 }
