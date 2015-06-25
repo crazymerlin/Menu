@@ -21,7 +21,7 @@ public class Ingredient {
 	
 	private int id;
 
-	public static List  <Ingredient> lst = new ArrayList  <Ingredient> ();
+	public static List  <Ingredient> ingredientList = new ArrayList  <Ingredient> ();
 	/** This private String value consist the title of dish ingredient. */
 	private String title;
 

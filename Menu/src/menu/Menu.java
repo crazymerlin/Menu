@@ -32,7 +32,9 @@ public class Menu {
 			// java.sql.Statement stmt1 = con.createStatement();
 			// int rs1 = stmt1.executeUpdate(queryCreate);
 
-			new JDBCStatement().IngredientReader();
+//			new JDBCStatement().IngredientReader();
+			
+			new JDBCStatement().portionOfIngredientsListReader();
 			
 			
 
