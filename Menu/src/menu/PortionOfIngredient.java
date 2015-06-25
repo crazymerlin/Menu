@@ -4,6 +4,9 @@
 
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Sviatoslav
  * 
@@ -13,9 +16,10 @@ public class PortionOfIngredient {
 	private double quantity;
 	private Ingredient ingredient;
 	private double price;
-	//private boolean available;
 
-	
+	/** This is private array list of PortionOfIngredient objects */
+	public static List<PortionOfIngredient> portionOfIngredientsList = new ArrayList<>();
+
 	public PortionOfIngredient() {
 		super();
 	}
@@ -30,7 +34,6 @@ public class PortionOfIngredient {
 		super();
 		this.quantity = quantity;
 		this.ingredient = ingredient;
-		//this.available = ingredient.isAvailable();//
 		double tmpPrice = Math.round(quantity * ingredient.getPrice() * 100.0);
 		this.price = tmpPrice / 100;
 	}
@@ -72,6 +75,22 @@ public class PortionOfIngredient {
 		return price;
 	}
 
+	/**
+	 * @return the portionOfIngredientsList
+	 */
+	public static List<PortionOfIngredient> getPortionOfIngredientsList() {
+		return portionOfIngredientsList;
+	}
+
+	/**
+	 * @param portionOfIngredientsList
+	 *            the portionOfIngredientsList to set
+	 */
+	public static void setPortionOfIngredientsList(
+			List<PortionOfIngredient> portionOfIngredientsList) {
+		PortionOfIngredient.portionOfIngredientsList = portionOfIngredientsList;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -80,7 +99,8 @@ public class PortionOfIngredient {
 	@Override
 	public String toString() {
 		return "PortionOfIngredient " + ingredient.getTitle() + " [quantity="
-				+ quantity + ", priceForPortion=" + price  
-				+ ", ingredient=" + ingredient + "]\n";
+				+ quantity + ", ingredient=" + ingredient + ", price=" + price
+				+ "]";
 	}
+
 }

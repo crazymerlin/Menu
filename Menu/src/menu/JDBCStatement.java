@@ -7,13 +7,11 @@ import java.sql.Statement;
 
 public class JDBCStatement {
 
-	public static final String driver = "com.mysql.jdbc.Driver";
-
 	public static void IngredientReader() {
 
 		try {
 
-			Class.forName(driver);
+			Class.forName("com.mysql.jdbc.Driver");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found " + e);
@@ -31,9 +29,9 @@ public class JDBCStatement {
 						rs.getString(2), rs.getDouble(3), rs.getString(4), rs
 								.getBoolean(5)));
 			}
-			con.close();
-			stmt.close();
 			rs.close();
+			stmt.close();
+			con.close();
 
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
@@ -44,7 +42,7 @@ public class JDBCStatement {
 	public static void MealReader() {
 		try {
 
-			Class.forName(driver);
+			Class.forName("com.mysql.jdbc.Driver");
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found " + e);
@@ -55,34 +53,30 @@ public class JDBCStatement {
 
 			Statement stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery("select m.id as mealid, m.title, mi.ingredientid, i.title, mi.quantity, i.ingredientDimension " +
-					"from meals m join mealitem mi on (m.id = mi.mealid) join ingredients i on (mi.ingredientid = i.id)");
-			
-			/*select m.id as mealid, m.title, 
-			mi.ingredientid, i.title, mi.quantity, i.ingredientDimension
-			from meals m
-			join mealitem mi on (m.id = mi.mealid)
-			join ingredients i on (mi.ingredientid = i.id);
-			*/
-//			
-			
-			
-			// CREATE OBJECT INGREDIENT
+			ResultSet rs = stmt
+					.executeQuery("SELECT mi.quantity, i.id, i.title, i.price, "
+							+ "i.ingredientDimension, i.available FROM meals m "
+							+ "JOIN mealitem mi ON (m.id = mi.mealid) "
+							+ "JOIN ingredients i ON (mi.ingredientid = i.id)");
+
+		
+			// CREATE OBJECTS INGREDIENT
 			while (rs.next()) {
 				PortionOfIngredient pi = new PortionOfIngredient();
 				Ingredient ingredient = new Ingredient();
 				ingredient.setId(rs.getInt(2));
-				ingredient.setId(rs.getInt(2));
-				ingredient.setId(rs.getInt(2));
-				ingredient.setId(rs.getInt(2));
-				ingredient.setId(rs.getInt(2));
-				/
+				ingredient.setTitle(rs.getString(3));
+				ingredient.setPrice(rs.getDouble(3));
+				ingredient.setIngredientDimension(rs.getString(5));
+				ingredient.setAvailable(rs.getBoolean(6));
+				pi.setQuantity(rs.getInt(1));
 				pi.setIngredient(ingredient);
-				pi.setQuantity(rs.getInt(5));
-						.getString(2), rs.getString(3), rs.getDouble(4), rs
-						.getString(5), rs.getBoolean(6)));
 			}
 			
+			rs.close();
+			stmt.close();
+			con.close();
+
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
