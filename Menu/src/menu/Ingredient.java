@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * @author Sviatoslav
- * 
  */
 public class Ingredient {
 
@@ -17,7 +16,7 @@ public class Ingredient {
 	private Product product;
 	private double price;
 
-	/** This is private array list of Ingredient objects */
+	/** This is private array list of Ingredient objects. */
 	public static List<Ingredient> ingredientsList = new ArrayList<>();
 
 	public Ingredient() {
@@ -37,7 +36,7 @@ public class Ingredient {
 		double tmpPrice = Math.round(quantity * product.getPrice() * 100.0);
 		this.price = tmpPrice / 100;
 	}
-	
+
 	/**
 	 * @return the quantity
 	 */
@@ -76,7 +75,8 @@ public class Ingredient {
 	}
 
 	/**
-	 * @param price the price to set
+	 * @param price
+	 *            the price to set
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -90,24 +90,23 @@ public class Ingredient {
 	}
 
 	/**
-	 * @param portionOfIngredientsList
+	 * @param ingredientsList
 	 *            the portionOfIngredientsList to set
 	 */
 	public static void setIngredientsList(
-			List<Ingredient> ingredientsList) {
+			final List<Ingredient> ingredientsList) {
 		Ingredient.ingredientsList = ingredientsList;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public String toString() {
-		return "Ingredient " + product.getTitle() + " [quantity="
-				+ quantity + ", product=" + product + ", price=" + price
-				+ "]";
+	public final String toString() {
+		return "Ingredient " + product.getTitle()
+				+ " [quantity=" + quantity
+				+ ", product=" + product
+				+ ", price=" + price + "]";
 	}
-
 }

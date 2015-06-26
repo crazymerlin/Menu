@@ -153,7 +153,7 @@ public class Meal {
 		return "Meal " + title + " [id=" + id + ", title=" + title + ", mealcategory="
 				+ mealcategory + ", price=" + price + ", available="
 				+ available + ", ingredientList="
-				+ ingredientList + "]";
+				+ ingredientList + "\n" + "]";
 	}
 
 
