@@ -91,11 +91,10 @@ public class JDBCStatement {
 					+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 					+ "JOIN ingredients i ON (mi.ingredientid = i.id) ORDER BY m.id";
 			
-			
-			
 			for (int i = 1; i <= 6; i++) {
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(queryIngredientList);
+				List<Ingredient> ingredientsList = new ArrayList<>();
 				while (rs.next()) {
 					if (rs.getInt(7) == i) {
 						Product product = new Product();
@@ -106,7 +105,7 @@ public class JDBCStatement {
 						product.setAvailable(rs.getBoolean(6));
 						Ingredient ingredient = new Ingredient(rs.getInt(1),
 								product);
-						Ingredient.ingredientsList.add(ingredient);
+						ingredientsList.add(ingredient);
 					}
 				}rs.close();
 				
@@ -121,7 +120,7 @@ public class JDBCStatement {
 				Meal meal = new Meal(rs1.getInt(1), 
 						rs1.getString(2),
 						rs1.getString(3), 
-						Ingredient.ingredientsList);
+						ingredientsList);
 				Meal.mealList.add(meal);
 				}
 			}

@@ -94,7 +94,7 @@ public class Ingredient {
 	 *            the portionOfIngredientsList to set
 	 */
 	public static void setIngredientsList(
-			final List<Ingredient> ingredientsList) {
+			 List<Ingredient> ingredientsList) {
 		Ingredient.ingredientsList = ingredientsList;
 	}
 
@@ -103,7 +103,7 @@ public class Ingredient {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
-	public final String toString() {
+	public  String toString() {
 		return "Ingredient " + product.getTitle()
 				+ " [quantity=" + quantity
 				+ ", product=" + product
