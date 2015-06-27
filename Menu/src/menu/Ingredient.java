@@ -106,7 +106,7 @@ public class Ingredient {
 	public  String toString() {
 		return "Ingredient " + product.getTitle()
 				+ " [quantity=" + quantity
-				+ ", product=" + product
-				+ ", price=" + price + "]";
+				+ ", price=" + price 
+				+ ", product=" + product + "\n" + "]";
 	}
 }

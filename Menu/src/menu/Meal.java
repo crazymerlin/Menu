@@ -152,7 +152,7 @@ public class Meal {
 	public String toString() {
 		return "Meal " + title + " [id=" + id + ", title=" + title + ", mealcategory="
 				+ mealcategory + ", price=" + price + ", available="
-				+ available + ", ingredientList="
+				+ available + ", ingredientList= \n "
 				+ ingredientList + "\n" + "]";
 	}
 
