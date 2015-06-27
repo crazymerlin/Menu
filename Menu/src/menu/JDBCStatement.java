@@ -9,18 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCStatement {
-	
+
 	public static final String pass = "1111";
+	public static final String login = "root";
+	public static final String path = "jdbc:mysql://localhost:3306/menu";
+	public static final String driver = "com.mysql.jdbc.Driver";
 
 	public static void productListCreator() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id, title, price, "
 					+ "ingredientDimension, available FROM ingredients");
@@ -32,6 +31,8 @@ public class JDBCStatement {
 			rs.close();
 			stmt.close();
 			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
@@ -39,17 +40,12 @@ public class JDBCStatement {
 
 	public static void ingredientsListCreator() {
 		try {
-
-			Class.forName("com.mysql.jdbc.Driver");
-
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			String queryListCreator = "SELECT mi.quantity, i.id, i.title, i.price, "
-					+ "i.ingredientDimension, i.available FROM meals m "
+					+ "i.ingredientDimension, i.available "
+					+ "FROM meals m "
 					+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 					+ "JOIN ingredients i ON (mi.ingredientid = i.id)";
 			Statement stmt = con.createStatement();
@@ -70,6 +66,8 @@ public class JDBCStatement {
 			rs.close();
 			stmt.close();
 			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
@@ -77,23 +75,18 @@ public class JDBCStatement {
 
 	public static void mealListCreator() {
 		try {
-
-			Class.forName("com.mysql.jdbc.Driver");
-
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			String queryIngredientList = "SELECT mi.quantity, i.id, i.title, i.price, "
 					+ "i.ingredientDimension, i.available, m.id, "
 					+ "m.title, m.mealcategory "
 					+ "FROM meals m "
 					+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 					+ "JOIN ingredients i ON (mi.ingredientid = i.id) ORDER BY m.id";
-			
-			for (int i = 1; i <= 6; i++) {
+			java.sql.Connection con1 = DriverManager.getConnection(path,
+					login, pass);
+			for (int i = 1; i <= 1000; i++) {
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(queryIngredientList);
 				List<Ingredient> ingredientsList = new ArrayList<>();
@@ -109,40 +102,35 @@ public class JDBCStatement {
 								product);
 						ingredientsList.add(ingredient);
 					}
-				}rs.close();
-				
-				java.sql.Connection con1 = DriverManager.getConnection(
-						"jdbc:mysql://localhost:3306/menu", "root", pass);
+				}
+				rs.close();
 				String queryMeal = "SELECT id, title, "
 						+ "mealcategory FROM meals WHERE  id= ?";
 				PreparedStatement pstmt = con1.prepareStatement(queryMeal);
 				pstmt.setInt(1, i);
 				ResultSet rs1 = pstmt.executeQuery();
 				while (rs1.next()) {
-				Meal meal = new Meal(rs1.getInt(1), 
-						rs1.getString(2),
-						rs1.getString(3), 
-						ingredientsList);
-				Meal.mealList.add(meal);
+					Meal meal = new Meal(rs1.getInt(1), rs1.getString(2),
+							rs1.getString(3), ingredientsList);
+					Meal.mealList.add(meal);
 				}
+				rs1.close();
+				stmt.close();
 			}
+			con.close();
 			System.out.println(Meal.mealList);
-			// rs1.close();
-			// stmt.close();
-			// con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
 	}
+
 	public static void addProduct() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			String addProduct = "INSERT INTO ingredients"
 					+ "(title, price, ingredientDimension, available) VALUES"
 					+ "('salo', 0.055, 'GR', TRUE)";
@@ -150,45 +138,64 @@ public class JDBCStatement {
 			int rs = stmt.executeUpdate(addProduct);
 			stmt.close();
 			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
 	}
-	
-	public static void addProductToMeal(int mealId, int productId, int productQuantity) {
-		
-		double mealPrice = 0;
-		
+
+	public static void addMeal(String title, String mealcategory) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
+			String addMeal = "INSERT INTO meals"
+					+ "(title, price, mealcategory, available) VALUES"
+					+ "(?, 0, ?, TRUE)";
+			PreparedStatement pstmt = con.prepareStatement(addMeal);
+			pstmt.setString(1, title);
+			pstmt.setString(2, mealcategory);
+			int rs = pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found " + e);
+		} catch (SQLException e) {
+			System.out.println("SQL exception occured" + e);
 		}
+	}
+
+	public static void addProductToMeal(int mealId, int productId,
+			int productQuantity) {
+
+		double mealPrice = 0;
+
 		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			String addProductToMeal = "INSERT INTO mealitem"
-					+ "(mealid, ingredientid, quantity) VALUES"
-					+ "(?, ?, ?)";
+					+ "(mealid, ingredientid, quantity) VALUES" + "(?, ?, ?)";
 			PreparedStatement pstmt = con.prepareStatement(addProductToMeal);
 			pstmt.setInt(1, mealId);
 			pstmt.setInt(2, productId);
 			pstmt.setInt(3, productQuantity);
 			int add = pstmt.executeUpdate();
 			pstmt.close();
-			
 			String queryIngredientPrice = "SELECT i.price, m.price "
 					+ "FROM ingredients i, meals m WHERE i.id= ? AND m.id= ?";
-			PreparedStatement pstmt1 = con.prepareStatement(queryIngredientPrice);
+			PreparedStatement pstmt1 = con
+					.prepareStatement(queryIngredientPrice);
 			pstmt1.setInt(1, productId);
 			pstmt1.setInt(2, mealId);
 			ResultSet price = pstmt1.executeQuery();
 			while (price.next()) {
-				mealPrice= price.getDouble(2) + price.getDouble(1)*productQuantity;
+				mealPrice = price.getDouble(2) + price.getDouble(1)
+						* productQuantity;
 			}
 			price.close();
 			pstmt1.close();
-			
 			String updateMealPrice = "UPDATE meals SET price= ? "
 					+ "WHERE id= ?";
 			PreparedStatement update = con.prepareStatement(updateMealPrice);
@@ -197,50 +204,46 @@ public class JDBCStatement {
 			int updatePrice = update.executeUpdate();
 			update.close();
 			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}
 	}
-	
+
 	public static void deleteProductFromMeal(int mealId, int ingredientId) {
-		
+
 		double mealPrice = 0;
-		
+
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-		try {
-			java.sql.Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/menu", "root", pass);
-			
+			Class.forName(driver);
+			java.sql.Connection con = DriverManager.getConnection(path, login,
+					pass);
 			String queryIngredientPrice = "SELECT i.price, mi.quantity, m.price "
 					+ "FROM meals m "
 					+ "JOIN mealitem mi ON (m.id = mi.mealid) "
 					+ "JOIN ingredients i ON (mi.ingredientid = i.id)"
 					+ "WHERE i.id=? AND mi.mealId=? AND mi.ingredientId=?;";
-			PreparedStatement pstmt1 = con.prepareStatement(queryIngredientPrice);
+			PreparedStatement pstmt1 = con
+					.prepareStatement(queryIngredientPrice);
 			pstmt1.setInt(1, ingredientId);
 			pstmt1.setInt(2, mealId);
 			pstmt1.setInt(3, ingredientId);
 			ResultSet price = pstmt1.executeQuery();
 			while (price.next()) {
-				mealPrice = price.getDouble(3) - price.getDouble(1)*price.getDouble(2);
+				mealPrice = price.getDouble(3) - price.getDouble(1)
+						* price.getDouble(2);
 			}
 			price.close();
 			pstmt1.close();
-			
 			String deleteProductFromMeal = "DELETE FROM mealitem "
 					+ "WHERE mealId = ? AND ingredientId = ?";
-			
-			PreparedStatement pstmt = con.prepareStatement(deleteProductFromMeal);
+			PreparedStatement pstmt = con
+					.prepareStatement(deleteProductFromMeal);
 			pstmt.setInt(1, mealId);
 			pstmt.setInt(2, ingredientId);
 			int delete = pstmt.executeUpdate();
 			pstmt.close();
-			
-			
 			String updateMealPrice = "UPDATE meals SET price= ? "
 					+ "WHERE id= ?";
 			PreparedStatement update = con.prepareStatement(updateMealPrice);
@@ -248,8 +251,9 @@ public class JDBCStatement {
 			update.setInt(2, mealId);
 			int updatePrice = update.executeUpdate();
 			update.close();
-			
 			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
 		} catch (SQLException e) {
 			System.out.println("SQL exception occured" + e);
 		}

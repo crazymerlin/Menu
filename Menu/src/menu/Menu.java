@@ -9,9 +9,11 @@ import java.sql.Statement;
 public class Menu {
 	public static void main(String[] args) {
 
+//		new JDBCStatement().addMeal("blackTeaPotatoSoup", "FIRST");
+		
 		new JDBCStatement().mealListCreator();
 		
-//		new JDBCStatement().addProductToMeal(1, 10, 200);
+//		new JDBCStatement().addProductToMeal(7, 2, 200);
 //		new JDBCStatement().deleteProductFromMeal(1, 10);
 
 		// ReaderWriter readerWriter = new ReaderWriter();
