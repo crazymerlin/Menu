@@ -5,40 +5,40 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-//
-//
-//public class IngredientTest {
-//	@BeforeTest
-//	public void beforeTest() {
-//		Ingredient ing = new Ingredient(); // TODO: Initialize to an appropriate
-//	}
-//	
-//	@Test(groups = "group1")
-//	public void zeroPriceValue() {
-//		Ingredient ing = new Ingredient("car", 0, IngredientDimension.GR, true); // TODO: Initialize to an appropriate
-//		double expected = 0; // TODO: Initialize to an appropriate value
-//		double actual;
-//		actual = ing.getPrice();
-//		AssertJUnit.assertEquals(expected, actual);
-//	}
-//	
-////	@Test(groups = "group1")
-////	public void underZeroPriceValue() {
-////		Ingredient ing = new Ingredient("car", -1, IngredientDimension.GR, true); // TODO: Initialize to an appropriate
-////		double expected = 0; // TODO: Initialize to an appropriate value
-////		double actual;
-////		actual = ing.getPrice();
-////		AssertJUnit.assertEquals(expected, actual);
-//	}
-//	
-////	@Test(groups = "group1")
-////	public void validPriceValue() {
-////		Ingredient ing = new Ingredient("carrot", 0.0005, IngredientDimension.GR, true); // TODO: Initialize to an appropriate
-////		double expected = 0.0005; // TODO: Initialize to an appropriate value
-////		double actual;
-////		actual = ing.getPrice();
-////		AssertJUnit.assertEquals(expected, actual);
-////	}
+
+
+public class IngredientTest {
+	@BeforeTest
+	public void beforeTest() {
+		Ingredient ing = new Ingredient(); // TODO: Initialize to an appropriate
+	}
+	
+	@Test(groups = "group1")
+	public void zeroPriceValue() {
+		Product ing = new Product(1, "car", 0, "GR", true); // TODO: Initialize to an appropriate
+		double expected = 0; // TODO: Initialize to an appropriate value
+		double actual;
+		actual = ing.getPrice();
+		AssertJUnit.assertEquals(expected, actual);
+	}
+	
+	@Test(groups = "group1")
+	public void underZeroPriceValue() {
+		Product ing = new Product(1, "car", -1, "GR", true); // TODO: Initialize to an appropriate
+		double expected = 0; // TODO: Initialize to an appropriate value
+		double actual;
+		actual = ing.getPrice();
+		AssertJUnit.assertEquals(expected, actual);
+	}
+	
+	@Test(groups = "group1")
+	public void validPriceValue() {
+		Product ing = new Product(1, "carrot", 0.0005,"GR", true); // TODO: Initialize to an appropriate
+		double expected = 0.0005; // TODO: Initialize to an appropriate value
+		double actual;
+		actual = ing.getPrice();
+		AssertJUnit.assertEquals(expected, actual);
+	}
 //	
 //	@Test(groups = "group2")
 //	public void setString() {
@@ -96,4 +96,4 @@ import org.testng.annotations.AfterClass;
 //	public void afterClass() {
 //	}
 //
-//}
+}
