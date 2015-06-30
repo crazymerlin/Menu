@@ -33,13 +33,10 @@ public class Meal {
 		this.mealcategory = MealCategory.valueOf(mealcategory);
 		this.ingredientList = ingredientList;
 		for (Ingredient ingredient : ingredientList) {
-			this.price += ingredient.getPrice();
-		}
-		for (Ingredient ingredient : Ingredient.ingredientsList) {
-			if (!ingredient.getIngredient().isAvailable()) {
+			if (!ingredient.getProduct().isAvailable()) {
 				this.available = false;
-				break;
-			}
+				break;}
+			this.price += ingredient.getPrice();
 		}
 	}
 	

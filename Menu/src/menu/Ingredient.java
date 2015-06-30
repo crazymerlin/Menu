@@ -35,6 +35,7 @@ public class Ingredient {
 		this.product = product;
 		double tmpPrice = Math.round(quantity * product.getPrice() * 100.0);
 		this.price = tmpPrice / 100;
+//		System.out.println(product.isAvailable());
 	}
 
 	/**
@@ -57,6 +58,27 @@ public class Ingredient {
 	 */
 	public Product getIngredient() {
 		return product;
+	}
+
+	/**
+	 * @return the product
+	 */
+	public Product getProduct() {
+		return product;
+	}
+
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
 	}
 
 	/**

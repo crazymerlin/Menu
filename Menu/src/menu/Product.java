@@ -22,6 +22,7 @@ public class Product {
 	private int id;
 
 	public static List  <Product> productList = new ArrayList  <Product> ();
+	
 	/** This private String value consist the title of dish ingredient. */
 	private String title;
 
@@ -32,7 +33,7 @@ public class Product {
 	private ProductDimension productDimension;
 
 	/**
-	 * This private boolean value consist the availability of dish ingredient.
+	 * This private boolean value consist the availability of meal product.
 	 */
 	private boolean available;
 
@@ -58,7 +59,6 @@ public class Product {
 		super();
 		this.id = id;
 		this.title = title;
-		
 		if (price <= 0) {
 			System.out.println("Your price must be above 0");
 		} else {
@@ -67,8 +67,6 @@ public class Product {
 		this.productDimension = ProductDimension.valueOf(productDimension);
 		this.available = available;
 	}
-
-
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

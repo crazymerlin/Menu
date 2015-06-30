@@ -112,7 +112,9 @@ public class JDBCStatement {
 				while (rs1.next()) {
 					Meal meal = new Meal(rs1.getInt(1), rs1.getString(2),
 							rs1.getString(3), ingredientsList);
-					Meal.mealList.add(meal);
+					if (meal.isAvailable()){
+						Meal.mealList.add(meal);
+					}
 				}
 				rs1.close();
 				stmt.close();
